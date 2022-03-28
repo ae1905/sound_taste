@@ -41,6 +41,10 @@ if uploaded_file is None:
 else:
     # if uploaded_file is not None:
     samplerate, data = wavfile.read(uploaded_file)
+    if data.ndim != 1:
+        data = data[:, 0]
+    else:
+        data = data
     st.write("filename:", uploaded_file.name)
     st.write('sample rates is :',samplerate)       
 
